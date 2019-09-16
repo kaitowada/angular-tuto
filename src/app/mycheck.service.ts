@@ -1,26 +1,33 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { MyData } from './models/MyData';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class MycheckService {
-  private _name: string;
+  private mydata: MyData = new MyData();
 
-  constructor() {
-    this.name = '(no-name)';
+  constructor(private client: HttpClient) {
+    this.client.get('/assets/data.json').subscribe((result: MyData) => {
+      this.mydata = result;
+    });
   }
 
-  get name () {
-    return this.name;
+  get(n: number) {
+    return this.mydata.list[n];
   }
 
-  set name (name: string) {
-    this._name = name;
+  get size() {
+    return this.mydata.list.length;
   }
 
-  hello () {
-    return 'hello,' + this.name;
+  get list() {
+    return this.mydata.list;
   }
 
-
+  get data() {
+    return this.mydata.data;
+  }
 }

@@ -8,26 +8,35 @@ import { HelloComponent } from './hello/hello.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { MessageComponent } from './message/message.component';
 import { MystyleDirective } from './mystyle.directive';
-import {MycheckService} from './mycheck.service';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialComponent } from './component/material/material.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HelloComponent,
     MessageComponent,
-    MystyleDirective
+    MystyleDirective,
+    MaterialComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatIconModule,
+    MatButtonToggleModule
   ],
   providers: [],
-  bootstrap: [HelloComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor (private service: MycheckService) {
-    service.name = 'hanako';
-  }
 }
