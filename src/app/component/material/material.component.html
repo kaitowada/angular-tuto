@@ -4,14 +4,26 @@
   </h1>
   <div>
     <h2>
-      material button
+      material form
     </h2>
-    <mat-button-toggle-group #tgl="matButtonToggleGroup" (change)="changeMessage(tgl.value)">
-      <mat-button-toggle value="one">one</mat-button-toggle>
-      <mat-button-toggle value="two">two</mat-button-toggle>
-      <mat-button-toggle value="three">three</mat-button-toggle>
-      <mat-button-toggle value="four">four</mat-button-toggle>
-    </mat-button-toggle-group>
-    <p class="message">{{ message }}</p>
+    <form [formGroup]="myControl">
+      <div>
+        <mat-form-field>
+          <input type="text" matInput matType="text" formControlName="name" placeholder="name">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <input type="number" matInput matType="number" formControlName="number" placeholder="0">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <input type="email" matInput matType="email" formControlName="email" placeholder="mail address">
+        </mat-form-field>
+      </div>
+      <button mat-raised-button (click)="click()">click</button>
+    </form>
   </div>
+  <p>{{ message }}</p>
 </div>
